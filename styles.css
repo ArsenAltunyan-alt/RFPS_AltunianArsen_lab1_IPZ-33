@@ -1,10 +1,12 @@
+/*ЗАГАЛЬНІ СТИЛІ*/
+
 *{
   box-sizing: border-box;
 }
 
 body{
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: system-ui,  Segoe UI, Roboto, "Helvetica Neue";
   color: #0f172a;
   background: #f8fafc;
   line-height: 1.6;
@@ -29,6 +31,12 @@ a:visited{
   color: darkgreen;
 }
 
+ul{
+  padding-left: 18px;
+}
+
+/*КНОПКИ*/
+
 .btn{
   display: inline-block;
   padding: 12px 18px;
@@ -51,33 +59,43 @@ a:visited{
   background: #2563eb;
 }
 
+.back-link .btn{
+  background: seagreen;
+}
+
+/*HEADER*/
+
 #header{
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 24px;
   background: linear-gradient(90deg, #0f766e, #14b8a6);
   color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
   z-index: 100;
+  padding: 16px 0;
 }
 
 #header .container{
+  position: relative;
   width: 1200px;
   max-width: 95%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 70px;
+  padding: 0 24px;
 }
 
 #header .brand{
   display: flex;
   align-items: center;
   gap: 16px;
+  position: absolute;
+  top: 0;
+  left: 24px;
+  bottom: 5px;
 }
 
 #header .logo-img{
@@ -90,15 +108,8 @@ a:visited{
   font-weight: 800;
 }
 
-#page-home #header{
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-#page-home #main-content{
-  padding-top: 104px;
+#main-nav{
+  margin-left: auto;
 }
 
 #main-nav .nav-list{
@@ -125,11 +136,15 @@ a:visited{
   color: #0f766e;
 }
 
+/*ОСНОВНИЙ КОНТЕНТ*/
+
 #main-content{
   max-width: 1100px;
   width: 92vw;
   margin: 24px auto;
 }
+
+/*ТАБЛИЦІ*/
 
 table{
   width: 100%;
@@ -152,23 +167,29 @@ thead th{
   z-index: 1;
 }
 
-ul{
-  padding-left: 18px;
+/*FOOTER*/
+
+#footer{
+  background: #e5e7eb;
+  text-align: center;
+  padding: 16px;
+  color: #374151;
+  font-size: 14px;
 }
 
-#page-home #logo,
-#page-home #site-title{
-  position: absolute;
-  top: 0;
-}
+/*ГОЛОВНА СТОРІНКА*/
 
 #page-home #logo{
+  position: absolute;
+  top: 0;
   left: clamp(10px, 2vw, 20px);
   width: 220px;
   max-width: 35vw;
 }
 
 #page-home #site-title{
+  position: absolute;
+  top: 0;
   left: clamp(240px, 25vw, 320px);
 }
 
@@ -244,6 +265,87 @@ ul{
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .15));
 }
 
+/*КАТАЛОГ*/
+
+#page-catalog #header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+#page-catalog #main-content{
+  padding-top: clamp(80px, 12vw, 140px);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+}
+
+#catalog-title{
+  grid-column: 1 / -1;
+  margin: 0 0 8px 0;
+}
+
+.product-card{
+  background: #fff;
+  border: 1px solid #064e3b;
+  border-top: 2px dotted #064e3b;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: inset 0 0 20px rgba(6, 78, 59, .08);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.product-card:hover{
+  transform: translateY(-3px);
+  box-shadow: inset 0 0 26px rgba(6, 78, 59, .12), 0 10px 18px rgba(2, 6, 23, .08);
+}
+
+.product-title{
+  font-weight: 800;
+  line-height: 1.25;
+  font-style: italic;
+  color: #064e3b;
+  font-size: 22px;
+}
+
+.product-origin{
+  color: #0369a1;
+  font-size: 15px;
+}
+
+.product-img{
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 4px 0 8px;
+  filter: none;
+  transition: filter .6s ease, transform .6s ease;
+  transform: translateZ(0);
+}
+
+.product-img:hover{
+  animation: vintage .9s forwards;
+}
+
+@keyframes vintage{
+  0%{
+    filter: none;
+    transform: scale(1);
+  }
+  40%{
+    filter: sepia(.6) contrast(1.05) saturate(.8) grayscale(.2) brightness(.96) hue-rotate(-8deg);
+    transform: scale(1.02);
+  }
+  100%{
+    filter: sepia(.9) contrast(1.15) saturate(.6) grayscale(.35) brightness(.93) hue-rotate(-15deg);
+    transform: scale(1.015) rotate(-.25deg);
+  }
+}
+
+/*ЗВОРОТНІЙ ЗВ'ЯЗОК*/
+
 #page-feedback #main-content{
   display: flex;
   flex-direction: column;
@@ -318,94 +420,7 @@ ul{
   background: green;
 }
 
-#page-catalog #header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-}
-
-#page-catalog #main-content{
-  padding-top: clamp(80px, 12vw, 140px);
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: clamp(14px, 2vw, 22px);
-}
-
-#catalog-title{
-  grid-column: 1 / -1;
-  margin: 0 0 8px 0;
-}
-
-.product-card{
-  background: #fff;
-  border: 1px solid #064e3b;
-  border-top: 2px dotted #064e3b;
-  border-radius: 14px;
-  padding: 14px;
-  box-shadow: inset 0 0 20px rgba(6, 78, 59, .08);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.product-card:hover{
-  transform: translateY(-3px);
-  box-shadow: inset 0 0 26px rgba(6, 78, 59, .12), 0 10px 18px rgba(2, 6, 23, .08);
-}
-
-.product-title{
-  font-weight: 800;
-  line-height: 1.25;
-  font-style: italic;
-  color: #064e3b;
-  font-size: 22px;
-}
-
-.product-origin{
-  color: #0369a1;
-  font-size: 15px;
-}
-
-.product-img{
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin: 4px 0 8px;
-  filter: none;
-  transition: filter .6s ease, transform .6s ease;
-  transform: translateZ(0);
-}
-
-#footer{
-  background: #e5e7eb;
-  text-align: center;
-  padding: 16px;
-  color: #374151;
-  font-size: 14px;
-}
-
-@keyframes vintage{
-  0%{
-    filter: none;
-    transform: scale(1);
-  }
-  40%{
-    filter: sepia(.6) contrast(1.05) saturate(.8) grayscale(.2) brightness(.96) hue-rotate(-8deg);
-    transform: scale(1.02);
-  }
-  100%{
-    filter: sepia(.9) contrast(1.15) saturate(.6) grayscale(.35) brightness(.93) hue-rotate(-15deg);
-    transform: scale(1.015) rotate(-.25deg);
-  }
-}
-
-.product-img:hover{
-  animation: vintage .9s forwards;
-}
-
-.back-link .btn{
-  background: seagreen;
-}
+/*АДАПТИВНІСТЬ*/
 
 @media (max-width: 1200px){
   #header .title{
@@ -436,6 +451,8 @@ ul{
   }
   #header .brand{
     width: 100%;
+    position: relative;
+    left: 0;
     justify-content: space-between;
   }
   #main-nav .nav-list{
