@@ -177,6 +177,15 @@ thead th{
   font-size: 14px;
 }
 
+footer[id="foot"] {
+    background-color: #222;
+    color: #fff;
+}
+
+footer[id$="ter"] {
+    border-top: 3px solid #6da095;
+    text-align: center;
+}
 /*ГОЛОВНА СТОРІНКА*/
 
 #page-home #logo{
